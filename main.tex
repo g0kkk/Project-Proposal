@@ -1,0 +1,1028 @@
+
+%% bare_jrnl.tex
+%% V1.3
+%% 2007/01/11
+%% by Michael Shell
+%% see http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.7 or later) with an IEEE journal paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/tex-archive/macros/latex/contrib/IEEEtran/
+%% and
+%% http://www.ieee.org/
+
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. IEEE's font choices can trigger bugs that do  ***
+% *** not appear when using other class files.                            ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%
+%% File list of work: IEEEtran.cls, IEEEtran_HOWTO.pdf, bare_adv.tex,
+%%                    bare_conf.tex, bare_jrnl.tex, bare_jrnl_compsoc.tex
+%%*************************************************************************
+
+% Note that the a4paper option is mainly intended so that authors in
+% countries using A4 can easily print to A4 and see how their papers will
+% look in print - the typesetting of the document will not typically be
+% affected with changes in paper size (but the bottom and side margins will).
+% Use the testflow package mentioned above to verify correct handling of
+% both paper sizes by the user's LaTeX system.
+%
+% Also note that the "draftcls" or "draftclsnofoot", not "draft", option
+% should be used if it is desired that the figures are to be displayed in
+% draft mode.
+%
+\documentclass[journal]{IEEEtran}
+\usepackage{blindtext}
+\usepackage{graphicx}
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+%\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 4.0 (2003-05-27) and later if using hyperref.sty. cite.sty does
+% not currently provide for hyperlinked citations.
+% The latest version can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/cite/
+% The documentation is contained in the cite.sty file itself.
+
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+  % \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation can
+% be obtained at: 
+% http://www.ctan.org/tex-archive/macros/latex/required/graphics/
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found as epslatex.ps or
+% epslatex.pdf at: http://www.ctan.org/tex-archive/info/
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+%\usepackage[cmex10]{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics. If using
+% it, be sure to load this package with the cmex10 option to ensure that
+% only type 1 fonts will utilized at all point sizes. Without this option,
+% it is possible that some math symbols, particularly those within
+% footnotes, will be rendered in bitmap form which will result in a
+% document that can not be IEEE Xplore compliant!
+%
+% Also, note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/amslatex/math/
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithms/
+% There is also a support site at:
+% http://algorithms.berlios.de/index.html
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithmicx/
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/tools/
+
+
+%\usepackage{mdwmath}
+%\usepackage{mdwtab}
+% Also highly recommended is Mark Wooding's extremely powerful MDW tools,
+% especially mdwmath.sty and mdwtab.sty which are used to format equations
+% and tables, respectively. The MDWtools set is already installed on most
+% LaTeX systems. The lastest version and documentation is available at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/mdwtools/
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+%\usepackage{eqparbox}
+% Also of notable interest is Scott Pakin's eqparbox package for creating
+% (automatically sized) equal width boxes - aka "natural width parboxes".
+% Available at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/eqparbox/
+
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\usepackage[tight,footnotesize]{subfigure}
+% subfigure.sty was written by Steven Douglas Cochran. This package makes it
+% easy to put subfigures in your figures. e.g., "Figure 1a and 1b". For IEEE
+% work, it is a good idea to load it with the tight package option to reduce
+% the amount of white space around the subfigures. subfigure.sty is already
+% installed on most LaTeX systems. The latest version and documentation can
+% be obtained at:
+% http://www.ctan.org/tex-archive/obsolete/macros/latex/contrib/subfigure/
+% subfigure.sty has been superceeded by subfig.sty.
+
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Javascript,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+%\usepackage[caption=false]{caption}
+%\usepackage[font=footnotesize]{subfig}
+% subfig.sty, also written by Steven Douglas Cochran, is the modern
+% replacement for subfigure.sty. However, subfig.sty requires and
+% automatically loads Axel Sommerfeldt's caption.sty which will override
+% IEEEtran.cls handling of captions and this will result in nonIEEE style
+% figure/table captions. To prevent this problem, be sure and preload
+% caption.sty with its "caption=false" package option. This is will preserve
+% IEEEtran.cls handing of captions. Version 1.3 (2005/06/28) and later 
+% (recommended due to many improvements over 1.2) of subfig.sty supports
+% the caption=false option directly:
+%\usepackage[caption=false,font=footnotesize]{subfig}
+%
+% The latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/subfig/
+% The latest version and documentation of caption.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/caption/
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure. The latest version and documentation can be found at:
+% http://www.ctan.org/tex-archive/macros/latex/base/
+
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/sttools/
+% Documentation is contained in the stfloats.sty comments as well as in the
+% presfull.pdf file. Do not use the stfloats baselinefloat ability as IEEE
+% does not allow \baselineskip to stretch. Authors submitting work to the
+% IEEE should note that IEEE rarely uses double column equations and
+% that authors should try to avoid such use. Do not be tempted to use the
+% cuted.sty or midfloat.sty packages (also by Sigitas Tolusis) as IEEE does
+% not format its papers in such ways.
+
+
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+% endfloat.sty was written by James Darrell McCauley and Jeff Goldberg.
+% This package may be useful when used in conjunction with IEEEtran.cls'
+% captionsoff option. Some IEEE journals/societies require that submissions
+% have lists of figures/tables at the end of the paper and that
+% figures/tables without any captions are placed on a page by themselves at
+% the end of the document. If needed, the draftcls IEEEtran class option or
+% \CLASSINPUTbaselinestretch interface can be used to increase the line
+% spacing as well. Be sure and use the nomarkers option of endfloat to
+% prevent endfloat from "marking" where the figures would have been placed
+% in the text. The two hack lines of code above are a slight modification of
+% that suggested by in the endfloat docs (section 8.3.1) to ensure that
+% the full captions always appear in the list of figures/tables - even if
+% the user used the short optional argument of \caption[]{}.
+% IEEE papers do not typically make use of \caption[]'s optional argument,
+% so this should not be an issue. A similar trick can be used to disable
+% captions of packages such as subfig.sty that lack options to turn off
+% the subcaptions:
+% For subfig.sty:
+% \let\MYorigsubfloat\subfloat
+% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
+% For subfigure.sty:
+% \let\MYorigsubfigure\subfigure
+% \renewcommand{\subfigure}[2][\relax]{\MYorigsubfigure[]{#2}}
+% However, the above trick will not work if both optional arguments of
+% the \subfloat/subfig command are used. Furthermore, there needs to be a
+% description of each subfigure *somewhere* and endfloat does not add
+% subfigure captions to its list of figures. Thus, the best approach is to
+% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
+% and instead reference/explain all the subfigures within the main caption.
+% The latest version of endfloat.sty and its documentation can obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/endfloat/
+%
+% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
+% later in the document, say, to conditionally put the References on a 
+% page by themselves.
+
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/misc/
+% Read the url.sty source comments for usage information. Basically,
+% \url{my_url_here}.
+
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+
+
+\begin{document}
+%
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+\title{Mobile Browser Privacy Measurement}
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+
+\author{Gokul Krishna P~\IEEEmembership{Amrita University, Amritapuri}% <-this % stops a space
+\thanks{M. Shell is with the Department
+of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta,
+GA, 30332 USA e-mail: (see http://www.michaelshell.org/contact.html).}% <-this % stops a space
+\thanks{J. Doe and J. Doe are with Anonymous University.}% <-this % stops a space
+\thanks{Manuscript received April 19, 2005; revised January 11, 2007.}}
+
+% note the % following the last \IEEEmembership and also \thanks - 
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+% 
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+
+% The paper headers
+\markboth{Project Proposal, July 2017}%
+{}
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+% 
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2007 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
+\maketitle
+
+
+
+\begin{abstract}
+%\boldmath
+We present the most detailed website by providing users with some basic
+information about their configuration and how track-able it is. We also want to
+exploit the data we collect to advise users about how they can be more similar
+to others and thus be less track-able. Moreover, we demonstrate how a large
+number of sensors on a smart phone can be used to construct a reliable hardware
+fingerprint of the phone. Here, we will be focusing on mobile browsers of
+Android, iOS and Windows phones. The tool would help one to learn how
+identifiable a person is and helps us to investigate on a user. The measurement
+or uniqueness is found by running our tool, Browque, which runs automated
+scripts which collects information about a remote device which will be used for
+identification purposes.
+
+\end{abstract}
+% IEEEtran.cls defaults to using nonbold math in the Abstract.
+% This preserves the distinction between vectors and scalars. However,
+% if the journal you are submitting to favors bold math in the abstract,
+% then you can use LaTeX's standard command \boldmath at the very start
+% of the abstract to achieve this. Many IEEE journals frown on math
+% in the abstract anyway.
+
+% Note that keywords are not normally used for peerreview papers.
+\begin{IEEEkeywords}
+Mobile Fingerprinting, Tracking.
+\end{IEEEkeywords}
+
+
+
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+
+\section{Introduction}
+Browque presents intense measurements on mobile browsers. 
+Browser Fingerprints are called Cookie-less monsters because it does not require
+any form of cookies to collect a fingerprint.In the absence of such a tool, it
+has been largely confined or kept away from a large group of people in the
+community. 
+
+
+Browque solves two important challenges faced by the web privacy community. It
+does so by building on the strengths of the past work on desktop browsers and
+regaining momentum by taking into consideration all the pitfalls that occur in
+mobile browsers. (1)We achieve scale through minimizing the weight of the
+scripts running which makes it easier to load and hence crashing of the browser
+can be thus avoided. (2) We reduce the duplication work by providing a modular
+architecture to enable re-use of the code. 
+
+
+Since Web browsers are not designed for automation, we use lightweight scripts
+and codes which would enable for the easy loading and testing of all mobile web
+browsers. As a result, those browsers which are in the beta version will be able
+to run the scripts as well. For covering it completely, we will be having a
+measurement for the network proxy as well.
+
+
+In the paper, Online Tracking: A 1-million-site Measurement and Analysis[1] , the
+authors shows the result by measuring top 1-million websites. The authors were
+focusing on the desktop browsers and was developed all in python making it
+available only to desktops. The tool moreover required a lot of libraries to be
+installed which were only tested for certain number operating systems. Here, we
+are building our tool on JavaScript which is entirely browser dependant and
+hence would remain lightweight and also independent of the operating system as
+well. Ghostery application for ios and android gives in a new browser rather
+than appending it to the mobile browser itself.  Firefox accepts in Duck Duck Go
+to be built as an extension for android[2] which never tracks a user. Plugins
+are small applications which the browser engine has to rely on to interpret and
+display the content of a web page. But what's going on inside of those plugins
+is not visible to the browser, they are black boxes. Handing over to them could
+lead to a huge delay in rendering of the page and unpredictable consumption of
+memory, which in turn user experience would go out of hands. 
+
+On the rise of mobile OS platforms, the up most target was to reach a fluent
+scrolling and zooming experience for all sizes of web pages loaded by the
+browser, using the limited CPU and RAM available. In order to achieve that, it
+was important to control all elements of the rendering.
+
+
+Turning to mobile browser fingerprinting, we revisit the analysis done by the
+authors of Open WPM and we are able to find that there has been a steady-fold
+increase in the trackers that has been embedded into a web page. The native apps
+in a mobile are of course great to a certain extent and at certain things. They
+are great for frequent, heavy use tasks like communicating with friends, family
+and colleagues. But the mobile web browsers of today, can easily take care of
+almost everything we want to accomplish. The mobile web capabilities standard
+has taken many companies off from the native apps and has switched to browsers. 
+We foresee a future where measurement provides a key layer of oversight of
+online privacy. To enable such oversight, all the data would be publicly
+available so that. We expect that the results help people in analyzing and
+understanding how track-able they are and also would be useful for the developers of privacy tool as well.
+
+
+
+
+\section{Background and Related work}
+\section*{Background}
+Previous surveys[4] has found that it is much more common for mobile devices
+which are not related of the same models have exactly the same fingerprint than
+for the Desktop browsers thus making it more difficult for the advertisers to
+track. It has been found that this happens because mobile browsers are sandboxed
+and there are not enough enough variables to reliably fingerprint the mobile
+device with the help of mobile browsers. Earlier to mitigate the large amount of
+browser false positives, mobile browser fingerprints were ignored to a certain
+extent. Instead, persistent device ID cookies were used. As users browse and
+interact with websites, they are observed by both “first parties”, which are the
+sites the user visits primarily, and “third parties”, which are typically hidden
+trackers such as ad networks inserted on most web pages. Third parties can
+obtain users’ browsing histories through a combination of cookies and other
+tracking technologies that allow them to uniquely identify users, and the
+“referer” header that tells the third party which first-party site the user is
+currently visiting.
+
+\section*{Related Work}
+
+The closest comparison to Browque are other open web privacy tools for mobile
+which we will review now. In the paper Mobile Device Identification via Sensor
+Fingerprinting[3], the demonstrates how the sensors in a smart phone can be used
+to construct a reliable hardware fingerprint of the phone.The authors use two
+methods, (1)Analyzing the frequency response of the speakerphone-microphone
+system and, (2) Analyzing device specific accelerometer calibration errors which
+is the most interesting one because it is accessible via JavaScript running in a mobile
+web browser without the need of any permission. 
+
+A cookie based tracking can be unreliable in case if the user deletes the cookie
+or block 3rd party cookie.The need for identifying users who are unique is very
+much important in the field of smart phones. The authors took into account cloud
+based app services as well.Taking a scenario as mentioned on the paper, suppose
+a user installs a cloud based app and in turn, the installed app installs an
+identifier on the device. At a later point of time, suppose the user resets the
+device which deletes the identifier as well. The user then re-installs the app
+and again an identifier is installed. At this point, the service cannot tell if
+the user was the previous one or not. This raises an issue by giving false
+number of unique users.
+
+Some of the standard Identification methods were Device ID, MAC address and
+Serial number. The MAC address however was ruled out because it could be
+altered. In the case of iOS devices, the unique device identifier is the primary
+method for the identification of an iOS device, however since iOS version 5, it
+has been deprecated. The amount of users having iOS version less than 5 being
+installed is pretty less. The authors of the paper used sensors as a method for
+identification. The main reason working behind this area is that each and every
+device can have some sort of manufacturing defect which makes some imperfections
+to the sensors and this can be used to identify users.
+
+One of the method that the authors had used was device identification via
+microphone. The main specification of a microphone and a loudspeaker is the
+frequency response.A microphone’s frequency response is its normalized output
+gain over a given frequency range and the variations that come up are due to the
+change in design of the audio device. The other method the authors had used was
+getting the device ID using accelerometer. The accelerometer measures the
+acceleration force that is applied to a device along all three physical axes.The
+authors used a web page to profile the accelerometer instead of the application
+as an application would require the internet connection and other permissions.
+The web page was purely JavaScript based and the web page had the following code
+
+\begin{verbatim}
+window.ondevicemotion = function(event) {
+var x = event.accelerationIncludingGravity.x; 
+var y = event.accelerationIncludingGravity.y; 
+var z = event.accelerationIncludingGravity.z; 
+…
+}
+\end{verbatim}
+
+
+In the paper XHOUND: Quantifying the Fingerprintability of Browser
+Extensions[3], the authors have shown that unwanted web tracking is on the rise,
+as advertisers are trying to capitalize on users’ online activity, using
+increasingly intrusive and sophisticated techniques. In the paper, the authors
+investigated and quantified the fingerprintability of browser extensions, such
+as, AdBlock and Ghostery. The authors have shown that an extension’s organic
+activity in a page’s DOM can be used to infer its presence, and develop XHOUND,
+the first fully automated system for fingerprinting browser extensions.By
+applying XHOUND to the 10,000 most popular Google Chrome extensions, the authors
+have found that a significant fraction of popular browser extensions are
+fingerprintable and could thus be used to supplement existing fingerprinting
+methods. Moreover, by surveying the installed extensions of 854 users, authors
+have discovered that many users tend to install different sets of
+fingerprintable browser extensions and could thus be uniquely, or near-uniquely
+identifiable by extension-based fingerprinting.
+
+\section*{Previous findings}
+
+Oleksii Starov and Nick Nikiforakis provided much of insight in the area of web
+fingerprinting. They examined the top 10,000 Chrome Store extensions, and showed that at
+least 9.2\% of extensions introduce detectable changes on any arbitrary URL, and more
+than 16.6\% introduce detectable changes on popular domains. The numbers increase to more
+than 13.2\% and 23\% respectively, by considering just the top 1,000 extensions.
+Moreover, they have found that popular extensions remain fingerprintable over time,
+despite updates and rank changes.The next question was, what kind of on-page changes do
+browser extensions introduce? The possibility of extension-based fingerprinting relies on
+a tracker’s ability to distinguish between introduced changes, i.e., which change was
+introduced by what extension. For instance, many adblocking extensions will result in the
+same absence of an ad on the page, while the additional UI elements of password managers
+will tend to have unique HTML code structures. Analyzing XHOUND’s results, they had
+showed that among 1,656 fingerprintable extensions almost 90 percent are uniquely
+identified based on the on-page modifications that they cause.
+
+
+Researchers[4] have recently developed the first reliable technique for websites
+to track visitors even when they use two or more different browsers. This
+shatters a key defense against sites that identify visitors based on the digital
+fingerprint their browsers leave behind.tate-of-the-art fingerprinting
+techniques are highly effective at identifying users when they use browsers with
+default or commonly used settings. For instance, the Electronic Frontier
+Foundation's privacy tool, known as Panopticlick, found that only one in about
+77,691 browsers had the same characteristics as the one commonly used by this
+reporter. Such fingerprints are the result of specific settings and
+customization's found in a specific browser installation, including the list of
+plugins, the selected time zone, whether a "do not track" option is turned on,
+and whether an adblocker is being used.Until now, however, the tracking has been
+limited to a single browser. This constraint made it in-feasible to tie, say, the
+fingerprint left behind by a Firefox browser to the fingerprint from a Chrome or
+Edge installation running on the same machine. The new technique—outlined in a
+research paper titled (Cross-)Browser Fingerprinting via OS and Hardware Level
+Features[5]—not only works across multiple browsers, it's also more accurate
+than previous single-browser fingerprinting.
+
+In an article [6] published originally on 2013 and modified on 2017, June, the author has
+mentioned that Fingerprinting matching is particularly useful for installs via a mobile
+web browser because these browsers are unable to collect unique device identifiers and
+therefore, the authors rely on device fingerprint matching to attribute app installs to
+user clicks. The major method to fingerprint a device was getting the finger print over
+cookie-based measurement. One of the biggest advantage was that, fingerprint matching
+occurs asynchronously in the background of the mobile app and never opens a new URL or a
+new tab. Apple adopts a policy of rejecting apps in the App Store that uses cookie based
+measurement and also that takes in the UUID as mentioned above and thus making
+fingerprint matching a new standard policy. The device fingerprint matching works by
+redirecting through a measurement URL and collecting the publicly available HTTP headers
+about the device wherein Attribution analytic attributes to a unique identification
+mark. 
+
+\section{Measurement Platform}
+We plan to build a website wherein we will be analyzing and storing the data by running
+automated scripts. We sought to make Browque scalable and open to support essentially any
+privacy measurement. In this paper, for the first time, we will be implementing a tool
+which would essentially show how unique you are by gathering the largest data collection
+ever. 
+
+\subsection{Design Motivation}
+With the increase in the use of Smart Phones, desktop browsers are set to be replaced by
+mobile browsers and the ad trackers are particularly in need to identify the users. We
+introduce a tool Browque which is built on the existing technologies that were previously
+brought up but differs in several ways. One such way is that it takes in almost every
+minute situation and edge cases to identify a user. AmIunique[7] works in such a way that
+it runs scripts in the browser and measures the fingerprint which is largely confined for
+desktop browsers. Many of the tracking techniques which were used were either through the
+device ID or through super-cookies of which both were being monitored by the App stores.
+
+\subsection{Design and Implementation}
+We propose to build a Web Application which we will be divided into two modules, browser
+manager which would look after the build of the mobile phone, basically RAM, GPU and the
+second one being, task manager which would check for fingerprint technology in a mobile
+phone. The entire application is build using JavaScript.
+
+\subsection{Providing support for mobile web browsers}
+
+We considered a variety of cases from the view of a user. We will be supporting all the
+technologies that a typical user would have access to and would be building on that.
+
+\subsection{Implementation}
+\begin{enumerate}
+  \item The visit to the page will call a function which would identify if the page is being visited through a browser for mobile by identifying the operating system. The comparison would be done against a dictionary which hold the top 10 most used operating system in the world.
+  \item The next step is to identify the browser which the user is using and would function from then according to the browser's standards. We will be including top 5 browsers from the Play Store and App Store. 
+  \item The user visits the website and the on-load of the web page will issue to the
+  browser manager which will check for the GPU, RAM and other specs of the mobile phone.
+  To fetch the basic details of a Smart phone, JavaScript would be used which would
+  ensure that the scripts would definitely be run irrespective of the content filtering
+  that comes in built in the software of many devices.
+  \item If the RAM, GPU and other specs are of the basic minimum limit , then the
+  application would behave in a manner which would enhance the user view according to the  details fetched and would pass the values to task manager. If the specs of the browser
+  are above the mentioned limits, then the details would be passed to the relevant
+  function of the task manager. 
+  \item When the RAM and GPU are less, the function that gets triggered will have very less scripts running, but would have significant amount of scripts which will mostly be having ClientJS running plus custom scripts. Since ClientJS is build on NodeJS,the scalability and throughput would be high. Also, NodeJS contains a lot of built in library as well making it light weight. 
+  \item If the smart phone is falls under the category of high RAM, the application would start executing slightly more scripts that usual which would make the precision more and also would not affect the performance of the whole smart phone. 
+  \item The task manager would check if fingerprint technology exists or not in the user phone and then pass the fetched values on to the main body of the application. Separate
+  functions would be executed if fingerprint technologies exist or not. All these are without human
+  interaction.
+  \item If the application finds that the smart phone has fingerprint technology being used, then the application would show an alert which would ask for the user's fingerprint ID. Once the fingerprint is triggered, a particular hashed string gets assigned to the same user's fingerprint which would be stored in the local-storage of the browser. This initialization of local storage would send a random hashed value to the database which will in no way be related to the original value of the fingerprint. 
+  \item Once the hashed value reaches the database, a script is written to check if the incoming number already exists in the database and if not, push into the database with other details which are being fetched in the beginning. In this way, a users privacy is not compromised.
+  \item If the fingerprint is not available, the user would then be asked to enter a 8 digit number which would have a permutation of 10 power 8. The number will directly be sent to the database and would be converted to a hashed value. The same process as checking the database would be done and if not, pushed to the database as a new record.
+  \item Once all these information are fetched, the user will be prompted with a
+  verification to proceed with the identification procedure as this is to ensure that all the tasks being performed in a user browser will be with the full permission. 
+  \item The permission would result in a new user interface and the scripts at the back-end starts
+  executing. Once the data is fetched, all the data will be displayed to the user and
+  would contain a delete option in case if the user feels it is trespassing into a user's
+  privacy. Moreover, the sensitive data such as fingerprint ID would be shown and dropped at the user end itself.
+  \item User would be shown a result which would be integer depicting his uniqueness. 
+  \item The database whose data which the users don't delete would be stored in a database which would
+  be publicly accessible with very minimum contents and wouldn't contain any sensitive data.
+\end{enumerate}
+
+\section{Fingerprinting using Browque}
+\begin{enumerate}
+\item The initiation of the scripts would start right after the page gets loaded in a web browser. The first function would be checking for the operating system and then the browsers like Opera browser, Safari, Chrome and Firefox currently. 
+\item According to the variations in the browser technology and the Operating system, the possibility to run a large amount of scripts would strip down to a few and thus code to be made into different functions which are to be executed depending on the browser.
+
+\end{enumerate}
+\section{Challenges faced}
+\begin{enumerate}
+\item One of the very first difficulty faced was that the gathering of information from the hardware level of a user's mobile from the web browser.  
+\item Secondly, identifying whether fingerprint technology exists in a smart phone is a problem. 
+\item The next issue was identifying the execution of scripts and the behaviour of software while executing scripts as some versions of the software does not allow certain scripts to be done. 
+\item The next issue was that the very large number of browsers available. The extension Ghostery has got a browser of it's own. Since different browsers support different scripts and has got different support for API's, figuring them out is a huge task. 
+\item Since the scripts that are getting executed will be fetching the IP as well to further get down to the uniqueness, using VPN or a proxy could create multiple entries of the same user. 
+\item The information collected soon after identifying the browser will be sent to the database which would essentially determine what kind of smart phone the user is using and would thus eliminate us from running heavy scripts. 
+\item Once the smart phone is identified, we would be grouping it into high, average and low performing phones. Once this is done, a check for fingerprint technology is done which is mandatory. For this, a pop up would be shown asking the user to place the fingerprint twice which would give a further precise value for the fingerprint.The value thus generated would essentially be stored in the local storage and would be done a hashing and would be sent to the server. 
+\item The smart phones which does not support fingerprint technology would be prompted to enter a eight digit key which would be unique for a user. If a user enters a eight digit number and matches with that of another, the user will be prompted again to enter the values. The reason for choosing eight digit is that it is highly unlikely for two persons to enter same 8 digit value which makes it more user friendly. 
+\item Once all the information has been fetched, the user will be prompted with a new dialogue box which would ask for the permission to start with the process. The dialogue box would contain the insight on how we would be measuring it.
+\item We are creating script which would take the most minimum time and also would be play a small video which would also be used as a measurement parameter. 
+\item Once the calculation is over, the user will be displayed the result and also would be shown all the data that we had fetched while executing the scripts thus making the user aware of what all information can be fetched. 
+\item A button would be provided which would delete the sensitive information so that there wouldn't be any breach into the privacy of a user. Also, the local storage data would be deleted as soon as the user closes the tab or browser. 
+\item The code will be public which we are using and hence if any modifications are to be done based on this, then the researchers can modify and use it. 
+\end{enumerate}
+
+\section{Timeline}
+\begin{enumerate}
+\item I would be testing the code to identify the operating systems and the alterations that could be done to an operating system which could return false-positives. All the testing I plan to finish in a week, starting from the second week of August, by considering all the edge cases possible. 
+\item Next, I will be implementing the script to fetch the Hardware information from the smart phone browser for the top 5 most used smart phone. Would be completing it in one and a half week time and merge with the existing code. Testing of the same would take another couple of days making it a couple of weeks altogether. 
+\item Next, I will be implementing the detection of fingerprint technology and test them which would be completed in two weeks time. Further testing would be done on the same. 
+\item After that, I will be merging it with the code for non-fingerprint user as well which would ask for an 8-digit code which would be done in a week's time. 
+\item Further, I would be integrating the existing codes with database and would be testing. This would be completed in another one week. 
+\item The storage of the items being sent to the database would be analyzed and then pushed to the database also will implement a script for the further checking of duplication of data. 
+\item The enhancement of the existing code would be done so that it would work in all the platforms without any hassle which would be completed by the end of September. 
+\item In the next four weeks, I would be focusing on the scripts that are to be executed after getting the permission from the user. The different values would be analyzed and pushed to the database. By the end of October, I will be done with the same. 
+\item The next task would be focusing on the hashes and the handling for four days and the next three days in the same week would be the large data handling in the back end. 
+\item The task for the coming week would be focus on the enhancement and smoothness of the scripts in various environments. 
+\item The following week would be dealt with all the error handling and unexpected issues that could arise while running the scripts and creating environments to handle the same.
+\item In the upcoming week, would be focusing on the less used browsers in the smart phones as well and adding more functionality as well.
+\end{enumerate}
+
+\section{Future Work}
+
+Web privacy measurement has the potential to play a key role in the future especially in the world of mobile browsers. The use of mobile and related technologies has seen steep rise and also they way trackers inventing new ways to identify the same has been in a two fold rise. To be aware of this, measurement tools must be publicly available rather than within a short community. The analysis presented in the paper would be further be extended to Tor browsers as well and would bring machine learning as well.
+% needed in second column of first page if using \IEEEpubid
+%\IEEEpubidadjcol
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation Results}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command, the
+% \label for the overall figure must come after \caption.
+% \hfil must be used as a separator to get equal spacing.
+% The subfigure.sty package works much the same way, except \subfigure is
+% used instead of \subfloat.
+%
+%\begin{figure*}[!t]
+%\centerline{\subfloat[Case I]\includegraphics[width=2.5in]{subfigcase1}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{subfigcase2}%
+%\label{fig_second_case}}}
+%\caption{Simulation results}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+
+
+% An example of a floating table. Note that, for IEEE style tables, the 
+% \caption command should come BEFORE the table. Table text will default to
+% \footnotesize as IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that IEEE does not put floats in the very first column - or typically
+% anywhere on the first page for that matter. Also, in-text middle ("here")
+% positioning is not used. Most IEEE journals use top floats exclusively.
+% Note that, LaTeX2e, unlike IEEE journals, places footnotes above bottom
+% floats. This can be corrected via the \fnbelowfloat command of the
+% stfloats package.
+
+
+
+
+
+
+
+
+% if have a single appendix:
+%\appendix[Proof of the Zonklar Equations]
+% or
+%\appendix  % for no appendix heading
+% do not use \section anymore after \appendix, only \section*
+% is possibly needed
+
+% use appendices with more than one appendix
+% then use \section to start each appendix
+% you must declare a \section before using any
+% \subsection or using \label (\appendices by itself
+% starts a section numbered zero.)
+%
+
+
+
+
+
+% Can use something like this to put references on a page
+% by themselves when using endfloat and the captionsoff option.
+
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+\begin{thebibliography}{1}
+
+\bibitem{Online Tracking: A 1-million-site Measurement and Analysis}
+Steven Englehardt and Arvind Narayanan. Online Tracking: A 1-million-site
+Measurement and Analysis. In Proceedings of CCS. ACM,
+2016.
+
+\bibitem{Addons From Firefox}
+Addons from Firefox, https://addons.mozilla.org/en-gb/android/
+
+\bibitem{XHOUND: Quantifying the Fingerprintability of Browser
+ Extensions}
+Oleksii Starov and Nick Nikiforakis. XHOUND: Quantifying the Fingerprintability of Browser Extensions. In Proceedings of ACM, 2013.
+  
+\bibitem{Sites can fingerprint you online}
+https://arstechnica.com/security/2017/02/now-sites-can-fingerprint-you-online-even-when-you-use-multiple-browsers/ . Sites can fingerprint you online
+ 
+\bibitem{Cross-Browser Fingerprinting via OS and Hardware Level Features}
+Yinzhi Cao, Song Li and Erik Wijmans.Cross-Browser Fingerprinting via OS and Hardware Level Features
+  
+\bibitem{Device Fingerprinting methodology}
+https://help.tune.com/marketing-console/device-fingerprinting-methodology/ . Device
+Fingerprinting Methodology
+  
+\bibitem{AmIUnique}
+Am I Unique? https://amiunique.org/
+  
+
+\end{thebibliography}
+
+% biography section 
+% 
+% If you have an EPS/PDF photo (graphicx package needed) extra braces are
+% needed around the contents of the optional argument to biography to prevent
+% the LaTeX parser from getting confused when it sees the complicated
+% \includegraphics command within an optional argument. (You could create
+% your own custom macro containing the \includegraphics command to make things
+% simpler here.)
+%\begin{biography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
+% or if you just want to reserve a space for a photo:
+
+
+
+% You can push biographies down or up by placing
+% a \vfill before or after them. The appropriate
+% use of \vfill depends on what kind of text is
+% on the last page and whether or not the columns
+% are being equalized.
+
+%\vfill
+
+% Can be used to pull up biographies so that the bottom of the last one
+% is flush with the other column.
+%\enlargethispage{-5in}
+
+
+
+% that's all folks
+\end{document}
+
+
