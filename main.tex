@@ -498,16 +498,15 @@
 \begin{abstract}
 %\boldmath
 We present the most detailed Web Application tool by providing users with some basic
-information about their configuration of the device and how track-able it is. We also
-want to
-exploit the data we collect to advise users about how they can be more similar
-to others and thus be less track-able. Moreover, we demonstrate how a large
+information about their configuration of the device and how track-able it is. We would
+exploit the data we collect to advise users about how they can be unique when compared
+to others and thus, how they can be less track-able. Moreover, we demonstrate how a large
 number of sensors on a smart phone can be used to construct a reliable hardware
 fingerprint of the phone. Here, we will be focusing on mobile browsers of
 Android, iOS and Windows phones for now. The tool would help one to learn how
 identifiable a person is and helps us to investigate on a user. The measurement
 or uniqueness is found by running our tool, Browque, which runs automated
-scripts that collects information about a remote device which will be used for
+scripts that collects information about a remote device accessed through mobile browsers which will be used for
 identification purposes.
 
 \end{abstract}
@@ -520,7 +519,7 @@ identification purposes.
 
 % Note that keywords are not normally used for peerreview papers.
 \begin{IEEEkeywords}
-Mobile Fingerprinting, Tracking.
+Mobile Fingerprinting, Sensors, Tracking.
 \end{IEEEkeywords}
 
 
@@ -541,8 +540,9 @@ Mobile Fingerprinting, Tracking.
 
 
 \section{Introduction}
-Browque presents intense measurements on mobile browsers. Browser Fingerprints are called Cookie-less monsters because it does not require
-any form of cookies to collect a fingerprint. In the absence of such a tool, it
+Browque presents intense measurements on mobile browsers. Browser Fingerprints are called
+Cookie-less monsters because it does not require
+any form of cookies to collect a fingerprint. In the absence of such a tool, privacy issues
 has been largely confined or kept away from a large group of people in the
 community. 
 
@@ -555,7 +555,7 @@ scripts running which makes it easier to load and hence crashing of the browser
 can be thus avoided. (2) We reduce the duplication work by providing a modular
 architecture to enable re-use of the code as well as removing the flase-positive results.
 
-Since Web browsers are not designed for automation, we use lightweight scripts
+Since Mobile Web browsers are not designed for automation, we use lightweight scripts
 and codes which would enable for the easy loading and testing of all mobile web
 browsers. As a result, those browsers which are in the beta version will be able
 to run the scripts as well. For covering it completely, we will be having a
@@ -565,9 +565,9 @@ measurement for the network proxy as well.
 In the paper, \textit{Online Tracking: A 1-million-site Measurement and Analysis}[1] , the
 authors shows the result by measuring top 1-million websites. The authors were
 focusing on the desktop browsers and the tool was developed all in python making it
-available easily only to desktops. The tool moreover required a lot of libraries to be
+available easily only for desktops. The tool moreover required a lot of python libraries to be
 installed which were only tested for certain number operating systems. Here, we
-are building our tool on JavaScript which is entirely browser dependant and
+are building our tool in JavaScript which is entirely browser dependant and
 hence would remain lightweight and also independent of the operating system as
 well. Ghostery application for iOS and Android gives in a new browser rather
 than appending it to the mobile browser itself.  Firefox accepts in Duck Duck Go
@@ -621,9 +621,9 @@ currently visiting.
 \section*{Related Work}
 
 The closest comparison to Browque are other open web privacy tools for mobile
-which we will review now. In the paper Mobile Device Identification via Sensor
-Fingerprinting[3], the authors demonstrates how the sensors in a smart phone can be used
-to construct a reliable hardware fingerprint of the phone.The authors use two
+which we will review now. In the paper \textit{Mobile Device Identification via Sensor
+Fingerprinting}[3], the authors demonstrates how the sensors in a smart phone can be used
+to construct a reliable hardware fingerprint of the phone. The authors use two
 methods, (1)Analyzing the frequency response of the speakerphone-microphone
 system and, (2) Analyzing device specific accelerometer calibration errors which
 is the most interesting one because it is accessible via JavaScript running in a mobile
@@ -632,7 +632,7 @@ web browser without the need of any permission.
 A cookie based tracking can be unreliable in case if the user deletes the cookie
 or block third party cookie.The need for identifying users who are unique is very
 much important in the field of smart phones. The authors took into account cloud
-based app services as well.Taking a scenario as mentioned on the paper, suppose
+based app services as well. Taking a scenario as mentioned on the paper, suppose
 a user installs a cloud based app and in turn, the installed app installs an
 identifier on the device. At a later point of time, suppose the user resets the
 device which deletes the identifier as well. The user then re-installs the app
@@ -656,27 +656,28 @@ frequency response.A microphone’s frequency response is its normalized output
 gain over a given frequency range and the variations that come up are due to the
 change in design of the audio device. The other method the authors had used was
 getting the device ID using accelerometer. The accelerometer measures the
-acceleration force that is applied to a device along all three physical axes.The
+acceleration force that is applied to a device along all three physical axes. The
 authors used a web page to profile the accelerometer instead of the application
 as an application would require the internet connection and other permissions.
-The web page was purely JavaScript based and the web page had the following code
+The web page was purely JavaScript based and the web page had the code in listing 1
 
 
 \medskip
 \begin{enumerate}
-\begin{lstlisting}[caption=Sensor Identification code]
+\begin{lstlisting}
 window.ondevicemotion = function(event) {
 var x = event.accelerationIncludingGravity.x; 
 var y = event.accelerationIncludingGravity.y; 
 var z = event.accelerationIncludingGravity.z;
 }
 \end{lstlisting}
+\noindent\textbox{\hfill listing 1: }\textbox{\hfil Javascript code snippet which uses sensors \hfil}\textbox{\hfill .}\\
 \end{enumerate}
 
 
 
-In the paper XHOUND: Quantifying the Fingerprintability of Browser
-Extensions[3], the authors have shown that unwanted web tracking is on the rise,
+In the paper \textit{XHOUND: Quantifying the Fingerprintability of Browser
+Extensions}[3], the authors have shown that unwanted web tracking is on the rise,
 as advertisers are trying to capitalize on users’ online activity, using
 increasingly intrusive and sophisticated techniques. In the paper, the authors
 investigated and quantified the fingerprintability of browser extensions, such
@@ -772,17 +773,17 @@ technologies that a typical user would have access to and would be building on t
 
 \subsection{Implementation}
 \begin{enumerate}
-  \item The visit to the page will call a function which would identify if the page is being visited through a browser for mobile by identifying the operating system. The comparison would be done against a dictionary which hold the top 10 most used operating system in the world. The code snippet for the same would be
+  \item The visit to the page will call a function which would identify if the page is being visited through a browser for mobile by identifying the operating system. Listing 2 shows the code snippet for identifying one of the OS, Android. The comparison would be done against a dictionary which hold the top 10 most used operating system in the world. Listing 2 shows the code using which Android smart phones are detected.
   
 \medskip
-\begin{lstlisting}[caption=Code for Detecting Android Smart phones]
+\begin{lstlisting}[]
 <script>
 var ua=navigator.userAgent.toLowerCase();
 var isAndroid = ua.indexOf("android");
 if(isAndroid){alert("android OS");}
 </script>
 \end{lstlisting}
-  
+\noindent\textbox{\hfill listing 2: }\textbox{\hfil Code for Detecting Android Smart phones \hfil}\textbox{\hfill .}\\
 \begin{verbatim}
 
 \end{verbatim}
