@@ -264,20 +264,30 @@
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 
 \lstset{frame=tb,
-  language=Javascript,
+  language=javascript,
   aboveskip=3mm,
   belowskip=3mm,
   showstringspaces=false,
   columns=flexible,
   basicstyle={\small\ttfamily},
   numbers=none,
-  numberstyle=\tiny\color{gray},
+  numberstyle=\footnotesize\color{gray},
   keywordstyle=\color{blue},
   commentstyle=\color{dkgreen},
   stringstyle=\color{mauve},
   breaklines=true,
   breakatwhitespace=true,
   tabsize=3
+}
+
+\lstdefinestyle{myCustomMatlabStyle}{
+  language=javascript,
+  numbers=left,
+  stepnumber=1,
+  numbersep=10pt,
+  tabsize=4,
+  showspaces=false,
+  showstringspaces=false
 }
 
 %\usepackage[caption=false]{caption}
@@ -409,7 +419,7 @@
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
-\title{Mobile Browser Privacy Measurement}
+\title{Browser Privacy Measurement \linebreak{\textit{Deep dive into Mobile browsers}}}
 %
 %
 % author names and IEEE memberships
@@ -645,14 +655,16 @@ authors used a web page to profile the accelerometer instead of the application
 as an application would require the internet connection and other permissions.
 The web page was purely JavaScript based and the web page had the following code
 
-\begin{verbatim}
+
+\lstset{basicstyle=\large,style=myCustomMatlabStyle}
+
+\begin{lstlisting}
 window.ondevicemotion = function(event) {
 var x = event.accelerationIncludingGravity.x; 
 var y = event.accelerationIncludingGravity.y; 
-var z = event.accelerationIncludingGravity.z; 
-…
+var z = event.accelerationIncludingGravity.z;
 }
-\end{verbatim}
+\end{lstlisting}
 
 
 In the paper XHOUND: Quantifying the Fingerprintability of Browser
@@ -708,7 +720,7 @@ research paper titled (Cross-)Browser Fingerprinting via OS and Hardware Level
 Features[5]—not only works across multiple browsers, it's also more accurate
 than previous single-browser fingerprinting.
 
-In an article [6] published originally on 2013 and modified on 2017, June, the author has
+In an article [6] published originally in 2013 and modified in 2017, June, the author has
 mentioned that Fingerprinting matching is particularly useful for installs via a mobile
 web browser because these browsers are unable to collect unique device identifiers and
 therefore, the authors rely on device fingerprint matching to attribute app installs to
@@ -754,12 +766,17 @@ technologies that a typical user would have access to and would be building on t
 \begin{enumerate}
   \item The visit to the page will call a function which would identify if the page is being visited through a browser for mobile by identifying the operating system. The comparison would be done against a dictionary which hold the top 10 most used operating system in the world. The code snippet for the same would be
   
-\begin{verbatim}
+  \lstset{basicstyle=\large,style=myCustomMatlabStyle}
+  \begin{lstlisting}
 <script>
-var ua = navigator.userAgent.toLowerCase();
-var isAndroid = ua.indexOf("android") > -1;
+var ua=navigator.userAgent.toLowerCase();
+var isAndroid = ua.indexOf("android");
 if(isAndroid){alert("android OS");}
 </script>
+\end{lstlisting}
+  
+\begin{verbatim}
+
 \end{verbatim}
   \item The next step is to identify the browser which the user is using and would function from then according to the browser's standards. We will be including top 5 browsers from the Play Store and App Store. 
   \item The user visits the website and the on-load of the web page will issue to the
